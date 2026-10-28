@@ -25,20 +25,21 @@ export const brand = {
 
 /* ============================================================
    НАВИГАЦИЯ
-   Одна страница: пункты меню ведут к секциям.
    ============================================================ */
 
 export type NavItem = { path: string; label: L };
 
 export const nav: NavItem[] = [
-  { path: "#services", label: { ru: "Услуги", en: "Services" } },
-  { path: "#work", label: { ru: "Проекты", en: "Work" } },
-  { path: "#diagnostic", label: { ru: "Диагностика", en: "Diagnostic" } },
+  { path: "/expertise", label: { ru: "Услуги", en: "Services" } },
+  { path: "/engagements", label: { ru: "Проекты", en: "Engagements" } },
+  { path: "/team", label: { ru: "Команда", en: "Team" } },
+  { path: "/insights", label: { ru: "Публикации", en: "Publications" } },
+  { path: "/careers", label: { ru: "Соискателям", en: "Careers" } },
 ];
 
 export const navCta: NavItem = {
-  path: "#contact",
-  label: { ru: "Обсудить задачу", en: "Start a conversation" },
+  path: "/diagnostic",
+  label: { ru: "Диагностика", en: "Diagnostic" },
 };
 
 /* ============================================================
@@ -161,6 +162,10 @@ export const principles: Principle[] = [
    ============================================================ */
 
 export const ui = {
+  allInsights: { ru: "Все публикации", en: "All publications" } satisfies L,
+  readMore: { ru: "Читать", en: "Read" } satisfies L,
+  backHome: { ru: "На главную", en: "Home" } satisfies L,
+  next: { ru: "Дальше", en: "Next" } satisfies L,
   allEngagements: { ru: "Все проекты", en: "All engagements" } satisfies L,
   allExpertise: { ru: "Все услуги", en: "All services" } satisfies L,
   filterAll: { ru: "Все", en: "All" } satisfies L,
@@ -174,6 +179,10 @@ export const ui = {
    ============================================================ */
 
 export const footer = {
+  columns: {
+    company: { ru: "Разделы", en: "Sections" } satisfies L,
+    work: { ru: "Ещё", en: "More" } satisfies L,
+  },
   ctaTitle: {
     ru: "Опишите задачу",
     en: "Describe the task",

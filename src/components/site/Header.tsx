@@ -16,29 +16,7 @@ export function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [section, setSection] = useState("");
   const { scrollY } = useScroll();
-
-  /** Подсветка пункта меню по секции, которая сейчас на экране. */
-  useEffect(() => {
-    const ids = [...nav, navCta].map((i) => i.path.slice(1));
-    const targets = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-    if (targets.length === 0) return;
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (visible) setSection(visible.target.id);
-      },
-      { rootMargin: "-45% 0px -50% 0px" },
-    );
-    targets.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 24));
 
@@ -49,7 +27,12 @@ export function Header({ locale }: { locale: Locale }) {
     };
   }, [open]);
 
-  const isActive = (path: string) => path === `#${section}`;
+  const isActive = (path: string) => {
+    const target = href(path, locale);
+    return path === "/"
+      ? pathname === target || pathname === `${target}/`
+      : pathname.startsWith(target);
+  };
 
   /** Тот же путь на другом языке. */
   const swapLocale = (next: Locale) => {

@@ -8,7 +8,7 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { ArrowIcon, Eyebrow } from "@/components/ui/Primitives";
 import { bands, diagnosticPage, dimensions } from "@/content/diagnostic";
 import { getService } from "@/content/services";
-import { t, tList, type Locale } from "@/lib/i18n";
+import { href, t, tList, type Locale } from "@/lib/i18n";
 import { cn, pad, plural } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -402,7 +402,7 @@ export function Diagnostic({ locale }: { locale: Locale }) {
                 service ? (
                   <Link
                     key={service.slug}
-                    href="#services"
+                    href={href(`/expertise/${service.slug}`, locale)}
                     className="group -mr-px -mb-px border border-line bg-ink-950 p-7 transition-colors duration-500 hover:bg-ink-800"
                   >
                     <h3 className="font-display text-[1.25rem] leading-tight tracking-tight text-fog-50 transition-colors duration-500 group-hover:text-gold-200">

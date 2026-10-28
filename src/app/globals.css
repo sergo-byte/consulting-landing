@@ -173,6 +173,15 @@
   color: var(--color-fog-50);
 }
 
+@utility display-sm {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  color: var(--color-fog-50);
+}
+
 /* Технический фон-сетка (как на чертеже) */
 @utility grid-veil {
   background-image:

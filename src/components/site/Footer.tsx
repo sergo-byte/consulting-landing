@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LogoMark } from "./Logo";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Eyebrow } from "@/components/ui/Primitives";
-import { brand, footer, nav } from "@/content/site";
+import { brand, footer, nav, navCta } from "@/content/site";
 import { href, t, type Locale } from "@/lib/i18n";
 
 export function Footer({ locale }: { locale: Locale }) {
@@ -25,7 +25,14 @@ export function Footer({ locale }: { locale: Locale }) {
             </p>
 
             <ul className="mt-12 flex flex-wrap gap-x-8 gap-y-3">
-              {nav.map((item) => (
+              {[
+                ...nav,
+                {
+                  path: "/contact",
+                  label: { ru: "Контакты", en: "Contact" },
+                },
+                navCta,
+              ].map((item) => (
                 <li key={item.path}>
                   <Link
                     href={href(item.path, locale)}

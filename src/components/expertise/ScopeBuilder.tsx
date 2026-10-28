@@ -3,9 +3,10 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useMemo, useState } from "react";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { Eyebrow } from "@/components/ui/Primitives";
+import Link from "next/link";
+import { ArrowIcon, Eyebrow } from "@/components/ui/Primitives";
 import { expertiseIntro, services } from "@/content/services";
-import { t, tList, type Locale } from "@/lib/i18n";
+import { href, t, tList, type Locale } from "@/lib/i18n";
 import { cn, pad, plural } from "@/lib/utils";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -138,6 +139,16 @@ export function ScopeBuilder({ locale }: { locale: Locale }) {
                             </li>
                           ))}
                         </ol>
+
+                        <Link
+                          href={href(`/expertise/${service.slug}`, locale)}
+                          className="group/l mt-5 inline-flex items-center gap-3 font-mono text-[0.625rem] tracking-[0.14em] text-fog-600 uppercase transition-colors duration-400 hover:text-fog-50"
+                        >
+                          {locale === "ru"
+                            ? "Открыть страницу услуги"
+                            : "Open the service page"}
+                          <ArrowIcon className="h-2 w-3.5 transition-transform duration-500 ease-out-expo group-hover/l:translate-x-1" />
+                        </Link>
 
                       </motion.div>
                     )}

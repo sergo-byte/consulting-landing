@@ -1,4 +1,4 @@
-import type { L } from "@/lib/i18n";
+import type { L, LList } from "@/lib/i18n";
 
 /* ============================================================
    ФОРМА
@@ -41,4 +41,30 @@ export const formStrings = {
     ru: "Отправляя форму, вы соглашаетесь на обработку указанных данных для ответа на обращение.",
     en: "By submitting the form you agree to your data being processed so that we can reply.",
   } satisfies L,
+};
+
+export const contactPage = {
+  eyebrow: { ru: "Контакты", en: "Contact" } satisfies L,
+  title: {
+    ru: "Опишите задачу",
+    en: "Describe the task",
+  } satisfies L,
+  lede: {
+    ru: "Расскажите, на каком решении вы застряли. Ответим, чем это лечится, сколько занимает и что потребуется с вашей стороны.",
+    en: "Tell us which decision you are stuck on. We will say what it takes to unstick it, how long it takes and what we need from you.",
+  } satisfies L,
+  directTitle: { ru: "Как мы отвечаем", en: "How we reply" } satisfies L,
+  directItems: {
+    ru: [
+      "Читает человек из практики, а не менеджер по продажам",
+      "В ответе — что мы поняли из задачи и чего не хватает, чтобы оценить",
+      "Если задача не наша, скажем об этом прямо",
+    ],
+    en: [
+      "A practitioner reads it, not a salesperson",
+      "The reply says what we understood and what is missing to scope it",
+      "If the task is not ours, we will say so plainly",
+    ],
+  } satisfies LList,
+  formTitle: { ru: "Форма", en: "Form" } satisfies L,
 };

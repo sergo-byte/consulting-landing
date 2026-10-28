@@ -1,23 +1,81 @@
-# Лендинг консалтинговой компании
+# Consulting website demo
 
-Одностраничный сайт на Next.js 16, TypeScript, Tailwind v4 и Motion.
-Два языка, тёмная тема, четыре интерактивных блока.
+**English** · [Русский](#сайт-консалтинговой-компании)
 
-Компания условная. Страница сделана как демонстрация вёрстки и
-интерфейса: названия, цифры и проекты обобщённые и ни к какой
-реальной организации не относятся.
+A demo website for a fictional strategy consulting company, built with
+Next.js 16, TypeScript, Tailwind CSS v4 and Motion. Two languages
+(Russian and English), a dark theme, 38 pages in total (19 per language).
+
+**Live demo:** https://sergo-byte.github.io/consulting-landing/
+
+> **About this project**
+> - **The company is fictional.** The names, figures, clients, team members and projects are generic and do not refer to any real organisation.
+> - **The site was built with [Claude Code](https://claude.com/claude-code)**, which wrote the code.
+> - **My role:** the idea, the requirements, design and product decisions, and reviewing and testing the result.
+
+## Pages
+
+| Page | What it shows |
+|---|---|
+| Home | Hero with a particle canvas, animated metrics, principles, previews of the other sections |
+| Services | Eight service areas, a page for each, and an interactive service builder |
+| Engagements | A rotating globe and project filters by industry, type of work and country |
+| Team | Fictional people shown as monograms, not photos |
+| Publications | Three demo articles |
+| Careers | What the company offers, who it looks for, the hiring process, and an application form |
+| Self-assessment | A 15-question quiz with a radar chart and suggested services |
+| Contact | A contact form with field validation |
+
+## Interactive parts
+
+- **Service builder.** Pick service areas and it builds a combined list of work stages.
+- **Project filter.** Three filter groups and a count of matching projects.
+- **Globe.** An orthographic projection on canvas with real country outlines
+  (Natural Earth 110m). It can be rotated with a mouse or a finger and turns
+  to a country on hover.
+- **Self-assessment quiz.** Fifteen questions across five dimensions, shown as a radar chart.
+  Answers stay in localStorage and are not sent anywhere.
+
+The forms check their fields and show a result but send nothing: this is a demo.
+
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+Opens at http://localhost:3000. The root redirects to `/ru` or `/en`
+depending on the browser language. The site is deployed to GitHub Pages
+by `.github/workflows/pages.yml` on every push to `main`.
 
 ---
 
-## Что на странице
+# Сайт консалтинговой компании
 
-| Секция | Что показывает |
+Многостраничный сайт на Next.js 16, TypeScript, Tailwind v4 и Motion.
+Два языка, тёмная тема, 38 страниц (по 19 на каждом языке).
+
+Компания условная. Сайт сделан как демонстрация вёрстки и
+интерфейса: названия, цифры, клиенты, сотрудники и проекты обобщённые
+и ни к какой реальной организации не относятся.
+
+Сайт сделан с помощью [Claude Code](https://claude.com/claude-code):
+код написал Claude Code. Моя роль — идея, требования, решения по
+дизайну и содержанию, проверка результата.
+
+---
+
+## Страницы
+
+| Страница | Что показывает |
 |---|---|
-| Первый экран | Заголовок с построчным проявлением, поле частиц на canvas |
-| Показатели | Пять чисел с анимацией счётчика |
-| Подход | Три принципа |
-| Услуги | Восемь направлений, 36 этапов, конструктор состава работ |
+| Главная | Первый экран с полем частиц на canvas, показатели со счётчиками, принципы, превью остальных разделов |
+| Услуги | Восемь направлений, отдельная страница для каждого, конструктор состава работ |
 | Проекты | Вращающийся глобус, фильтр по отрасли, типу работы и стране |
+| Команда | Условные сотрудники, монограммы вместо фотографий |
+| Публикации | Три демонстрационные статьи |
+| Соискателям | Что предлагает компания, кого ищет, как проходит отбор, форма отклика |
 | Диагностика | 15 вопросов, радар по пяти измерениям, подбор услуг |
 | Контакты | Форма с проверкой полей |
 
@@ -32,8 +90,8 @@
 - **Диагностика.** Пятнадцать вопросов, результат в виде радара.
   Ответы хранятся в localStorage и никуда не отправляются.
 
-Форма проверяет заполнение и показывает результат, но ничего не
-отправляет: это демонстрация.
+Формы проверяют заполнение и показывают результат, но ничего не
+отправляют: это демонстрация.
 
 ---
 
@@ -61,6 +119,10 @@ npm run dev
 | `engagements.ts` | Проекты, справочники отраслей и стран, координаты для глобуса |
 | `diagnostic.ts` | Вопросы диагностики и толкование результата |
 | `forms.ts` | Подписи полей формы |
+| `clients.ts` | Условные клиенты для стены логотипов |
+| `team.ts` | Условные сотрудники |
+| `insights.ts` | Публикации |
+| `careers.ts` | Страница для соискателей |
 
 Подпись автора выводится в подвале. Впишите имя и ссылку в
 `footer.credit` в `site.ts` — строка появится; пока поле пустое, её нет.
@@ -82,7 +144,7 @@ npm run build:pages   # то же, что собирает GitHub Actions
 npm run build:prod    # боевой режим
 ```
 
-Страница пересобирается сама при `git push` в ветку `main`
+Сайт пересобирается сам при `git push` в ветку `main`
 (`.github/workflows/pages.yml`). Адрес и префикс путей workflow берёт
 из имени репозитория, поэтому после переименования репозитория ничего
 править не нужно.
@@ -95,8 +157,8 @@ npm run build:prod    # боевой режим
   языки разведены по адресу.
 - `proxy.ts` выбирает язык по заголовкам браузера в серверном режиме;
   в статике то же делает `public/index.html`.
-- Пункты меню — якоря на секции. Активный подсвечивается через
-  `IntersectionObserver`.
+- Пункты меню — ссылки на страницы. Активный пункт подсвечивается
+  по текущему адресу.
 - Блоки проявляются при прокрутке. Те, что при загрузке оказались выше
   экрана (переход по якорю, перезагрузка в середине страницы),
   показываются сразу — иначе остались бы невидимыми.
